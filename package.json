@@ -1,10 +1,10 @@
 {
-  "name": "TDW-Sections",
-  "version": "2.0.0",
+  "name": "tdw-sections",
+  "version": "1.0.2",
   "description": "",
   "main": "index.js",
   "scripts": {
-    "build": "tsc",
+    "build": "rollup -c",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "peerDependencies": {
@@ -18,6 +18,11 @@
     "@types/react": "^17.0.13",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
+    "rollup": "^2.52.7",
+    "rollup-plugin-commonjs": "^10.1.0",
+    "rollup-plugin-node-resolve": "^5.2.0",
+    "rollup-plugin-peer-deps-external": "^2.2.4",
+    "rollup-plugin-typescript2": "^0.30.0",
     "typescript": "^4.3.5"
   },
   "files": [

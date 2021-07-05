@@ -1,11 +1,11 @@
-import * as React from 'react'
+import * as React from "react";
 
-const Button = () => {
-    return (
-        <button>
-            I am the Header!
-        </button>
-    )
+interface IButtonProps {
+  text: string;
 }
 
-export default Button
+const Button: React.FC<IButtonProps> = ({ text }) => {
+  return <button style={{backgroundColor: "pink"}}>{text}</button>;
+};
+
+export default Button;
