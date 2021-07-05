@@ -3,3 +3,11 @@ node_modules
 package-lock.json
 
 build
+
+index.d.ts
+
+index.js.map
+
+index.js
+
+Sections
