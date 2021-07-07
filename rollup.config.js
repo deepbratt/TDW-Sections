@@ -16,7 +16,9 @@ export default {
     }
   ],
   plugins: [
-    external(),
+    external({
+      includeDependencies: true
+  }),
     resolve(),
     typescript({
       rollupCommonJSResolveHack: true,
@@ -30,9 +32,16 @@ export default {
           "Children",
           "Component",
           "PropTypes",
-          "createElement"
+          "createElement",
+          ['isValidElementType']
         ],
-        "node_modules/react-dom/index.js": ["render"]
+        "node_modules/react-dom/index.js": ["render"],
+        'node_modules/react-is/index.js': [
+          'ForwardRef',
+          'Memo',
+          'isFragment',
+          "isValidElementType"
+        ],
       }
     })
   ]

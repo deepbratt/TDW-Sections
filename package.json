@@ -1,6 +1,6 @@
 {
   "name": "tdw-sections",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "",
   "main": "index.js",
   "scripts": {
@@ -16,6 +16,7 @@
   "license": "ISC",
   "devDependencies": {
     "@types/react": "^17.0.13",
+    "@types/react-router-dom": "^5.1.7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "rollup": "^2.52.7",
@@ -27,5 +28,11 @@
   },
   "files": [
     "build"
-  ]
+  ],
+  "dependencies": {
+    "@material-ui/core": "^4.12.0",
+    "@material-ui/icons": "^4.11.2",
+    "react-router-dom": "^5.2.0",
+    "save": "^2.4.0"
+  }
 }

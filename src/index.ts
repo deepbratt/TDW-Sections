@@ -1,4 +1,4 @@
-import Header from "./Sections/Header"
+import Header from "./Sections/Header/Header"
 
 
 export {
