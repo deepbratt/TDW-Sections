@@ -1,39 +1,55 @@
+import peerDepsExternal from "rollup-plugin-peer-deps-external";
+import resolve from "@rollup/plugin-node-resolve";
+import commonjs from "@rollup/plugin-commonjs";
 import typescript from "rollup-plugin-typescript2";
-import commonjs from "rollup-plugin-commonjs";
-import external from "rollup-plugin-peer-deps-external";
-import resolve from "rollup-plugin-node-resolve";
 import pkg from "./package.json";
+import babel from "rollup-plugin-babel";
+import urlAsset from "rollup-plugin-asset-url"
 
 export default {
-  input: "src/index.ts",
+  input: "src/index.tsx",
   output: [
     {
-      name: "tdw-sections",
+      name: "@TDW/Sections",
       file: pkg.main,
       format: "cjs",
       exports: "named",
-      sourcemap: true
-    }
+      sourcemap: true,
+    },
+    {
+      name: "@TDW/Sections",
+      file: pkg.module,
+      format: "esm",
+      exports: "named",
+      sourcemap: true,
+    },
   ],
+  globals: {
+    react: "React",
+    "react-dom": "ReactDOM",
+  },
   plugins: [
-    external(),
-    resolve(),
+    peerDepsExternal(),
+    urlAsset({
+      fileName: '[name][extname]',
+      output: './build/assets',
+      limit: false,
+      reserveImportInJs: true 
+    }),
+    babel({
+      exclude: "node_modules/**",
+    }),
+    resolve({ jsnext: true, main: true, browser: true }),
     typescript({
+      tsconfig: "./tsconfig.json",
       rollupCommonJSResolveHack: true,
-      exclude: "**/__tests__/**",
-      clean: true
+      exclude: ["*/_tests_/*"],
+      clean: true,
     }),
     commonjs({
       include: ["node_modules/**"],
-      namedExports: {
-        "node_modules/react/react.js": [
-          "Children",
-          "Component",
-          "PropTypes",
-          "createElement"
-        ],
-        "node_modules/react-dom/index.js": ["render"]
-      }
-    })
-  ]
+      ignoreGlobal: true,
+      namedExports: { react: ["createElement", "Component"] },
+    }),
+  ],
 };
