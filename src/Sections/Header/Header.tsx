@@ -15,7 +15,7 @@ const HeaderContext = () => {
 
   return (
     <React.Fragment>
-      <AppBar style={{background: "white",paddingBottom: "0px", boxShadow: "none",}} className={root} position="sticky">
+      <AppBar style={{background: "white",paddingBottom: "0px", boxShadow: "none",paddingTop: "0px"}} className={root} position="sticky">
         <Hidden smDown>
           <img src={header} alt="logo" className={rec} />
         </Hidden>
@@ -42,7 +42,7 @@ const HeaderContext = () => {
 
               <ListItem>
                 <CustomButton style={{background: "white", color: "black"}}  >
-                  Add an Ad
+                  Post an Ad
                 </CustomButton>
               </ListItem>
             </List>
